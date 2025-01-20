@@ -1,0 +1,15 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>{{ object.title }}</title>
+</head>
+<body>
+    <h1>{% if object %}Edit Movie{% else %}Add Movie{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'movie_list' %}">Cancel</a>
+</body>
+</html>
