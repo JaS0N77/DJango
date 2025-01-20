@@ -1,15 +1,20 @@
-!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>{{ object.title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
 </head>
 <body>
-    <h1>{{ object.title }}</h1>
-    <p>{{ object.description }}</p>
-    <p>Release Date: {{ object.release_date }}</p>
-    <p>Rating: {{ object.rating }}</p>
-    <a href="{% url 'movie_update' object.pk %}">Edit</a>
-    <a href="{% url 'movie_delete' object.pk %}">Delete</a>
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+    <p>Release Date: {{ movie.release_date }}</p>
+    <p>Rating: {{ movie.rating }}</p>
+    {% if movie.image %}
+        <img src="{{ movie.image.url }}" alt="{{ movie.title }}" style="max-width: 300px;">  <!-- Відображення зображення -->
+    {% endif %}
+    <a href="{% url 'movie_edit' movie.pk %}">Edit</a>
+    <a href="{% url 'movie_delete' movie.pk %}">Delete</a>
     <a href="{% url 'movie_list' %}">Back to List</a>
 </body>
 </html>
